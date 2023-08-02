@@ -2,9 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
+const createButton = (text: string) => <button>{text}</button>
+
 root.render(
   <React.Fragment>
-    <button>Hello Button 1</button>
-    <button>Hello Button 2</button>
+    {createButton('Hello')}
+    {createButton('World')}
+    {createButton('!')}
   </React.Fragment>
 )
