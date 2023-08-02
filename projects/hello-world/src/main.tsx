@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom/client'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
-const createButton = (text: string) => <button>{text}</button>
+const Button = ({ text }: { text: string }) => <button>{text}</button>
 
 root.render(
   <React.Fragment>
-    {createButton('Hello')}
-    {createButton('World')}
-    {createButton('!')}
+    <Button text="Hello" />
+    <Button text="World" />
   </React.Fragment>
 )
