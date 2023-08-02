@@ -1,4 +1,4 @@
-interface TwitterFollowCardProps {
+export interface TwitterFollowCardProps {
   username: string,
   formatUserName?: (username: string) => string,
   isFollowing?: boolean,
