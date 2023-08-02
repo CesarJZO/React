@@ -7,19 +7,14 @@ export function App() {
   return (
     <section className='App'>
       <TwitterFollowCard username="CesarJZO">
-        <TwitterFollowCard username="CesarJZO">
-          <h1>
-            César Zárate
-          </h1>
-        </TwitterFollowCard>
+        <i>César Zárate</i>
       </TwitterFollowCard>
       <TwitterFollowCard username="CesarJZO" formatUserName={addAt}>
-        <h1>
-          César Zárate
-        </h1>
+        <b>César Zárate</b>
       </TwitterFollowCard>
       <TwitterFollowCard username="CesarJZO" isFollowing>
         <strong>César Zárate</strong>
+        {/* There can be any children */}
       </TwitterFollowCard>
     </section>
   )
