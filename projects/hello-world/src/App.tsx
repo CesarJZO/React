@@ -6,20 +6,21 @@ export function App() {
 
   return (
     <section className='App'>
-      <TwitterFollowCard
-        username="CesarJZO"
-        name="César Zárate"
-      />
-      <TwitterFollowCard
-        formatUserName={addAt}
-        username="midudev"
-        name="Midu"
-      />
-      <TwitterFollowCard
-        username="AlexCVJ"
-        name="Alex P🐷"
-        isFollowing
-      />
+      <TwitterFollowCard username="CesarJZO">
+        <TwitterFollowCard username="CesarJZO">
+          <h1>
+            César Zárate
+          </h1>
+        </TwitterFollowCard>
+      </TwitterFollowCard>
+      <TwitterFollowCard username="CesarJZO" formatUserName={addAt}>
+        <h1>
+          César Zárate
+        </h1>
+      </TwitterFollowCard>
+      <TwitterFollowCard username="CesarJZO" isFollowing>
+        <strong>César Zárate</strong>
+      </TwitterFollowCard>
     </section>
   )
 }

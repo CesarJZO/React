@@ -1,10 +1,11 @@
 export function TwitterFollowCard(
   props: {
-    formatUserName?: (username: string) => string,
     username: string,
-    name: string,
-    isFollowing?: boolean
-  }) {
+    formatUserName?: (username: string) => string,
+    isFollowing?: boolean,
+    children?: React.ReactNode
+  },
+  ) {
   return (
     // Declaring a class in JSX using a prefix
     <article className="tw-followCard">
@@ -14,7 +15,7 @@ export function TwitterFollowCard(
           src={`https://unavatar.io/${props.username}`}
           alt={`${props.username} profile picture`} />
         <div className="tw-followCard-info">
-          <strong>{props.name}</strong>
+          {props.children}
           <span className="tw-followCard-infoUsername">
             {props.formatUserName ? props.formatUserName(props.username) : `${props.username}`}
           </span>
