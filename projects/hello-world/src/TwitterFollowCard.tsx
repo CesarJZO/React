@@ -1,30 +1,39 @@
-export function TwitterFollowCard(
-  props: {
-    username: string,
-    formatUserName?: (username: string) => string,
-    isFollowing?: boolean,
-    children?: React.ReactNode
-  },
-  ) {
+interface TwitterFollowCardProps {
+  username: string,
+  formatUserName?: (username: string) => string,
+  isFollowing?: boolean,
+  children?: React.ReactNode
+}
+
+TwitterFollowCard.defaultProps = {
+  username: 'unknown'
+};
+
+export function TwitterFollowCard({
+  username,
+  formatUserName,
+  isFollowing,
+  children
+}: TwitterFollowCardProps) {
   return (
     // Declaring a class in JSX using a prefix
     <article className="tw-followCard">
       <header className="tw-followCard-header">
         <img
           className="tw-followCard-avatar"
-          src={`https://unavatar.io/${props.username}`}
-          alt={`${props.username} profile picture`} />
+          src={`https://unavatar.io/${username}`}
+          alt={`${username} profile picture`} />
         <div className="tw-followCard-info">
-          {props.children}
+          {children}
           <span className="tw-followCard-infoUsername">
-            {props.formatUserName ? props.formatUserName(props.username) : `${props.username}`}
+            {formatUserName ? formatUserName(username) : `${username}`}
           </span>
         </div>
       </header>
 
       <aside>
         <button className="tw-followCard-button">
-          {props.isFollowing ? 'Following' : 'Follow'}
+          {isFollowing ? 'Following' : 'Follow'}
         </button>
       </aside>
     </article>
