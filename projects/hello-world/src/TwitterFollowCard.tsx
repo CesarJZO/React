@@ -1,20 +1,31 @@
-export interface TwitterFollowCardProps {
+import { useState } from "react"
+
+interface TwitterFollowCardProps {
   username: string,
-  formatUserName?: (username: string) => string,
-  isFollowing?: boolean,
   children?: React.ReactNode
 }
 
 TwitterFollowCard.defaultProps = {
   username: 'unknown'
-};
+}
 
-export function TwitterFollowCard({
-  username,
-  formatUserName,
-  isFollowing,
-  children
-}: TwitterFollowCardProps) {
+export function TwitterFollowCard({ username, children }: TwitterFollowCardProps) {
+  // False is the default value for the state
+  const [isFollowing, setIsFollowing] = useState(false)
+
+  // Equivalent to:
+  // const state = useState(false)
+  // const value = useState(false)[0] // or state[0]
+  // const setIsFollowing = useState(false)[1] // or state[1]
+
+  const buttonClassName = isFollowing
+    ? 'tw-followCard-button is-following'
+    : 'tw-followCard-button'
+
+  const handleClick = () => {
+    setIsFollowing(!isFollowing)
+  }
+
   return (
     // Declaring a class in JSX using a prefix
     <article className="tw-followCard">
@@ -26,13 +37,13 @@ export function TwitterFollowCard({
         <div className="tw-followCard-info">
           {children}
           <span className="tw-followCard-infoUsername">
-            {formatUserName ? formatUserName(username) : `${username}`}
+            {`@${username}`}
           </span>
         </div>
       </header>
 
       <aside>
-        <button className="tw-followCard-button">
+        <button className={buttonClassName} onClick={handleClick}>
           {isFollowing ? 'Following' : 'Follow'}
         </button>
       </aside>
