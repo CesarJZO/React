@@ -3,8 +3,7 @@ import { TwitterFollowCard } from './TwitterFollowCard'
 
 export function App() {
   return (
-    // Equivalent to <React.Fragment>
-    <>
+    <section className='App'>
       <TwitterFollowCard
         username="CesarJZO"
         name="César Zárate"
@@ -18,8 +17,8 @@ export function App() {
       <TwitterFollowCard
         username="AlexCVJ"
         name="Alex P🐷"
-        isFollowing={true}
+        isFollowing={false}
       />
-    </>
+    </section>
   )
 }
