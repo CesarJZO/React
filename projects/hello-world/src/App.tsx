@@ -12,12 +12,12 @@ export function App() {
       <TwitterFollowCard
         username="midudev"
         name="Midu"
-        isFollowing={true}
+        isFollowing={false}
       />
       <TwitterFollowCard
         username="AlexCVJ"
         name="Alex P🐷"
-        isFollowing={false}
+        isFollowing
       />
     </section>
   )
