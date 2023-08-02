@@ -1,4 +1,10 @@
-export function TwitterFollowCard(props: { username: string, name: string, isFollowing: boolean }) {
+export function TwitterFollowCard(
+  props: {
+    formatUserName?: (username: string) => string,
+    username: string,
+    name: string,
+    isFollowing?: boolean
+  }) {
   return (
     // Declaring a class in JSX using a prefix
     <article className="tw-followCard">
@@ -10,7 +16,7 @@ export function TwitterFollowCard(props: { username: string, name: string, isFol
         <div className="tw-followCard-info">
           <strong>{props.name}</strong>
           <span className="tw-followCard-infoUsername">
-            @{props.username}
+            {props.formatUserName ? props.formatUserName(props.username) : `${props.username}`}
           </span>
         </div>
       </header>

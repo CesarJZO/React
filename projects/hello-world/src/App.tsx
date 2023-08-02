@@ -2,17 +2,18 @@ import './App.css'
 import { TwitterFollowCard } from './TwitterFollowCard'
 
 export function App() {
+  const addAt = (username: string) => `@${username}`
+
   return (
     <section className='App'>
       <TwitterFollowCard
         username="CesarJZO"
         name="César Zárate"
-        isFollowing={true}
       />
       <TwitterFollowCard
+        formatUserName={addAt}
         username="midudev"
         name="Midu"
-        isFollowing={false}
       />
       <TwitterFollowCard
         username="AlexCVJ"
