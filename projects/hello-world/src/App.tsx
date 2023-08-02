@@ -3,20 +3,17 @@ import { TwitterFollowCard } from './TwitterFollowCard'
 
 export function App() {
 
+  const components = []
+
+  for (let i = 0; i < 5; i++) {
+    components.push(<TwitterFollowCard username={`user${i}`}>
+      César Zárate
+    </TwitterFollowCard>)
+  }
+
   return (
     <section className='App'>
-      <TwitterFollowCard username="CesarJZO" initialIsFollowing>
-        <i>César Zárate</i>
-      </TwitterFollowCard>
-      
-      <TwitterFollowCard>
-        <strong>César Zárate</strong>
-      </TwitterFollowCard>
-
-      <TwitterFollowCard username="midudev">
-        <strong>Midu</strong>
-        {/* There can be any children */}
-      </TwitterFollowCard>
+      {components}
     </section>
   )
 }
