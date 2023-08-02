@@ -2,6 +2,7 @@ import { useState } from "react"
 
 interface TwitterFollowCardProps {
   username: string,
+  initialIsFollowing?: boolean,
   children?: React.ReactNode
 }
 
@@ -9,9 +10,10 @@ TwitterFollowCard.defaultProps = {
   username: 'unknown'
 }
 
-export function TwitterFollowCard({ username, children }: TwitterFollowCardProps) {
-  // False is the default value for the state
-  const [isFollowing, setIsFollowing] = useState(false)
+export function TwitterFollowCard({ username, children, initialIsFollowing }: TwitterFollowCardProps) {
+  // False is the default value for the state.
+  // The initial value is only used the first time the component is rendered.
+  const [isFollowing, setIsFollowing] = useState(initialIsFollowing)
 
   // Equivalent to:
   // const state = useState(false)
