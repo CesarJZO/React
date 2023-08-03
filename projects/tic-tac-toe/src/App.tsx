@@ -8,15 +8,18 @@ const TURNS = {
 
 const Square = (props: {
   children: React.ReactNode,
-  isSelected: boolean,
-  updateBoard: () => void,
-  index: number
+  isSelected?: boolean,
+  updateBoard?: (i:number) => void,
+  index?: number
 }) => {
 
   const className = `square ${props.isSelected ? 'is-selected' : ''}`
 
   const handleClick = () => {
-    props.updateBoard()
+    if (!props.updateBoard) return
+    if (props.index === undefined) return
+
+    props.updateBoard(props.index)
   }
 
   return (
@@ -36,7 +39,12 @@ function App() {
 
   const [turn, setTurn] = useState(TURNS.X)
 
-  const updateBoard = () => {
+  const updateBoard = (index: number) => {
+    const newBoard = [...board]
+    newBoard[index] = turn
+    
+    setBoard(newBoard)
+
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
   }
