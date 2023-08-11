@@ -77,9 +77,18 @@ function App() {
     }
   }
 
+  const resetGame = () => {
+    setBoard(Array(9).fill(null))
+    setTurn(TURNS.X)
+    setWinner(null)
+  }
+
   return (
     <main className='board'>
       <h1>Tic tac toe</h1>
+      <button onClick={resetGame}>
+        Reset game
+      </button>
       <section className='game'>
         {
           board.map((_, index) => {
@@ -107,23 +116,25 @@ function App() {
       {
         winner && (
           <section className='winner'>
-              <div className='text'>
-                <h2>
-                  {
-                    winner === false
-                      ? 'Draw'
-                      : `Winner is`
-                  }
-                </h2>
+            <div className='text'>
+              <h2>
+                {
+                  winner === false
+                    ? 'Draw'
+                    : `Winner is`
+                }
+              </h2>
 
-                <header className='win'>
-                  {winner && <Square>{winner}</Square>}
-                </header>
+              <header className='win'>
+                {winner && <Square>{winner}</Square>}
+              </header>
 
-                <footer>
-                  <button>Play again!</button>
-                </footer>
-              </div>
+              <footer>
+                <button onClick={resetGame}>
+                  Play again!
+                </button>
+              </footer>
+            </div>
           </section>
         )
       }
