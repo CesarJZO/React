@@ -6,27 +6,36 @@ const TURNS = {
   O: '○'
 }
 
-const Square = (props: {
-  children: React.ReactNode,
-  isSelected?: boolean,
-  updateBoard?: (i:number) => void,
-  index?: number
-}) => {
+const WINNING_COMBINATIONS = [
+  // Horizontal
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  // Vertical
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  // Diagonal
+  [0, 4, 8],
+  [2, 4, 6]
+]
 
-  const className = `square ${props.isSelected ? 'is-selected' : ''}`
+const Square = ({ children, isSelected, updateBoard, index }) => {
+
+  const className = `square ${isSelected ? 'is-selected' : ''}`
 
   const handleClick = () => {
-    if (!props.updateBoard) return
-    if (props.index === undefined) return
+    if (!updateBoard) return
+    if (index === undefined) return
 
-    props.updateBoard(props.index)
+    updateBoard(index)
   }
 
   return (
     <div
       className={className}
       onClick={handleClick}>
-      {props.children}
+      {children}
     </div>
   )
 }
@@ -38,9 +47,21 @@ function App() {
   )
 
   const [turn, setTurn] = useState(TURNS.X)
+  const [winner, setWinner] = useState(null)
 
-  const updateBoard = (index: number) => {
-    if (board[index]) return
+  const checkWinner = (board) => {
+    for (const combination of WINNING_COMBINATIONS) {
+      const [a, b, c] = combination
+
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        return board[a]
+      }
+    }
+    return null
+  }
+
+  const updateBoard = (index) => {
+    if (board[index] || winner) return
 
     // newBoard is created because we can't mutate the state directly
     const newBoard = [...board]
@@ -49,6 +70,11 @@ function App() {
 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
+
+    const newWinner = checkWinner(newBoard)
+    if (newWinner) {
+      setWinner(newWinner)
+    }
   }
 
   return (
