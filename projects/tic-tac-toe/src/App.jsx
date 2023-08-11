@@ -60,6 +60,10 @@ function App() {
     return null
   }
 
+  const checkGameOver = (board) => {
+    return board.every(s => s !== null)
+  }
+
   const updateBoard = (index) => {
     if (board[index] || winner) return
 
@@ -74,6 +78,8 @@ function App() {
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       setWinner(newWinner)
+    } else if (checkGameOver(newBoard)) {
+      setWinner(false)
     }
   }
 
@@ -114,7 +120,7 @@ function App() {
       </section>
 
       {
-        winner && (
+        winner !== null && (
           <section className='winner'>
             <div className='text'>
               <h2>
