@@ -5,8 +5,8 @@ const FollowMouse = () => {
 
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
+  // Move pointer
   useEffect(() => {
-    console.log('effect ', { enabled })
     const handleMove = (event) => {
       const { clientX, clientY } = event
       setPosition({ x: clientX, y: clientY })
@@ -19,10 +19,19 @@ const FollowMouse = () => {
     // or when dependencies change.
     // It's a good place to clean up event listeners
     return () => {
-      console.log('Cleanup')
       window.removeEventListener('pointermove', handleMove)
     }
   }, [enabled])
+
+  // Change body className
+  useEffect(() => {
+    document.body.classList.toggle('no-cursor', enabled)
+
+    return () => {
+      document.body.classList.remove('no-cursor')
+    }
+  }, [enabled])
+
   return (
     <>
       <div
@@ -47,14 +56,9 @@ const FollowMouse = () => {
 }
 
 function App() {
-  const [mounted, setMounted] = useState(true)
-
   return (
     <main>
-      {mounted && <FollowMouse />}
-      <button onClick={() => setMounted(!mounted)}>
-        {mounted ? 'Unmount' : 'Mount'} the mouse follower
-      </button>
+      <FollowMouse />
     </main>
   )
 }
