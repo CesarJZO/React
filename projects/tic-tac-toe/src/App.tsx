@@ -40,9 +40,11 @@ function App() {
   const [turn, setTurn] = useState(TURNS.X)
 
   const updateBoard = (index: number) => {
+    if (board[index]) return
+
+    // newBoard is created because we can't mutate the state directly
     const newBoard = [...board]
     newBoard[index] = turn
-    
     setBoard(newBoard)
 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
