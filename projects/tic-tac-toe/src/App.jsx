@@ -6,20 +6,21 @@ import { TURNS } from './constants.js'
 import { checkWinner, checkGameOver } from './logic/board.js'
 import { WinnerModal } from './components/WinnerModal.jsx'
 import './App.css'
+import { getBoardFromStorage, getTurnFromStorage, resetGameStorage, saveGameToStorage } from './logic/storage/index.js'
 
 function App() {
   const [board, setBoard] = useState(() => {
     // ['×', '○', '×', '○', '×', '○', '×', '○', '×']
     // A lambda is used to avoid reading from local storage on every render
     // It will only be called the first time the component is rendered
-    const boardFromStorage = window.localStorage.getItem('board')
+    const boardFromStorage = getBoardFromStorage()
     return boardFromStorage
       ? JSON.parse(boardFromStorage)
       : Array(9).fill(null)
   })
 
   const [turn, setTurn] = useState(() => {
-    const turnFromStorage = window.localStorage.getItem('turn')
+    const turnFromStorage = getTurnFromStorage()
     return turnFromStorage ?? TURNS.X
   })
   const [winner, setWinner] = useState(null)
@@ -36,8 +37,10 @@ function App() {
     setTurn(newTurn)
 
     // Save game
-    window.localStorage.setItem('board', JSON.stringify(newBoard))
-    window.localStorage.setItem('turn', newTurn)
+    saveGameToStorage({
+      board: newBoard,
+      turn: newTurn
+    })
 
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
@@ -53,8 +56,7 @@ function App() {
     setTurn(TURNS.X)
     setWinner(null)
 
-    window.localStorage.removeItem('board')
-    window.localStorage.removeItem('turn')
+    resetGameStorage()
   }
 
   return (
