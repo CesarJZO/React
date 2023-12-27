@@ -1,5 +1,6 @@
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 const Article = () => {
   const content = `
@@ -11,6 +12,12 @@ const Article = () => {
 
   **Lorem ipsum** dolor sit amet, consectetur adipisicing elit. Perferendis, facilis harum corporis illum dicta, doloribus doloremque veniam, explicabo ipsum laborum quibusdam sunt facere repellat quos delectus expedita quisquam hic eligendi!
   
+  ~~~js
+  const a = 1
+  const b = 2
+  const c = a + b
+  ~~~
+
   > A block quote with ~strikethrough~ and a URL: [React](https://reactjs.org).
 
   * Lists
@@ -30,7 +37,28 @@ const Article = () => {
   | Paragraph   | Text        |
   `;
 
-  return <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>;
+  return (<Markdown
+    children={content}
+    components={{
+      code(props) {
+        const { children, className, node, ...rest } = props
+        const match = /language-(\w+)/.exec(className || '')
+        return match ? (
+          <SyntaxHighlighter
+            {...rest}
+            PreTag="div"
+            children={String(children).replace(/\n$/, '')}
+            language={match[1]}
+            // style={darkTheme}
+          />
+        ) : (
+          <code {...rest} className={className}>
+            {children}
+          </code>
+        )
+      }
+    }}
+  />);
 };
 
 export default Article;
