@@ -1,14 +1,9 @@
-import Article from './Article'
+import Article from "./Article";
 
-import './App.css'
+import "./App.css";
 
 function App() {
-
-  return (
-    <>
-      <Article />
-    </>
-  )
+  return <Article />;
 }
 
-export default App
+export default App;

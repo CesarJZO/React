@@ -1,0 +1,66 @@
+.markdown {
+  line-height: 1.5em;
+}
+
+.markdown h1 {
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid #363636;
+}
+
+.markdown code {
+  background-color: #363636;
+  border-radius: 4px;
+  
+  font-family: 'Cascadia Code', consolas, 'Courier New', Courier, monospace;
+  padding: 2px 4px;
+}
+
+.markdown pre {
+  background-color: #363636;
+  border-radius: 4px;
+  
+  padding: 2em;
+}
+
+.markdown pre code {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+.markdown li {
+  margin: 0.2em 0;
+}
+
+.markdown img {
+  max-width: 100%;
+}
+
+.markdown blockquote {
+  margin-block: 0;
+  margin-inline: 0;
+
+  border-left: 4px solid #646cff;
+  color: #aaa;
+  padding: 0.5em 1em;
+}
+
+.markdown blockquote p {
+  margin: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  .markdown h1 {
+    border-bottom: 2px solid #e0e0e0;
+  }
+  .markdown code {
+    background-color: #f2f2f2;
+  }
+  .markdown pre {
+    background-color: #f2f2f2;
+  }
+  .markdown blockquote {
+    border-left: 4px solid #535bf2;
+    color: #888;
+  }
+}
