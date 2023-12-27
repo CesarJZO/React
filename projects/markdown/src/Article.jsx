@@ -28,6 +28,11 @@ const Article = () => {
 
   | a | b |
   | - | - |
+  | 1 | 2 |
+
+  An image:
+
+  ![React](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png)
 
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, facilis harum corporis illum dicta, doloribus doloremque veniam, explicabo ipsum laborum quibusdam sunt facere repellat quos delectus expedita quisquam hic eligendi!
 
@@ -37,28 +42,35 @@ const Article = () => {
   | Paragraph   | Text        |
   `;
 
-  return (<Markdown
-    children={content}
-    components={{
-      code(props) {
-        const { children, className, node, ...rest } = props
-        const match = /language-(\w+)/.exec(className || '')
-        return match ? (
-          <SyntaxHighlighter
-            {...rest}
-            PreTag="div"
-            children={String(children).replace(/\n$/, '')}
-            language={match[1]}
-            // style={darkTheme}
-          />
-        ) : (
-          <code {...rest} className={className}>
-            {children}
-          </code>
-        )
-      }
-    }}
-  />);
+  return (
+    <div style={{
+      maxWidth: '100%',
+    }}>
+      <Markdown
+        children={content}
+        remarkPlugins={[remarkGfm]}
+        components={{
+          code(props) {
+            const { children, className, node, ...rest } = props;
+            const match = /language-(\w+)/.exec(className || "");
+            return match ? (
+              <SyntaxHighlighter
+                {...rest}
+                PreTag="div"
+                children={String(children).replace(/\n$/, "")}
+                language={match[1]}
+                // style={darkTheme}
+              />
+            ) : (
+              <code {...rest} className={className}>
+                {children}
+              </code>
+            );
+          },
+        }}
+      />
+    </div>
+  );
 };
 
 export default Article;
