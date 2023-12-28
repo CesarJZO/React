@@ -17,21 +17,39 @@ export const content = `
   const c = a + b
   \`\`\`
 
-  > A block quote with ~strikethrough~ and a URL: [React](https://reactjs.org).
+  > A block quote with strikethrough and a URL: [React](https://reactjs.org).
 
-  * Lists
-  * [ ] todo
-  * [x] done
+  In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends
+  of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to
+  eat: it was a [hobbit-hole][1], and that means comfort.
+  
+  [1]: <https://en.wikipedia.org/wiki/Hobbit#Lifestyle> "Hobbit lifestyles"
 
+  > Lists
+
+  > * [ ] todo
+  > * [x] done
+
+  > ### Ordered list
+  > 1. First
+  > 1. Second
+  > 1. Third
+  >    1. Indented
+
+  - 1968\\. A great year!
+  - I think that's enough examples.
+ 
   A table:
+
+  ---
 
   | a | b |
   | - | - |
   | 1 | 2 |
 
-  >  An image:
+  > An image:
 
-  ![React](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png)
+  > ![React](../public/images/Jog.png)
 
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, facilis harum corporis illum dicta, doloribus doloremque veniam, explicabo ipsum laborum quibusdam sunt facere repellat quos delectus expedita quisquam hic eligendi!
 
@@ -41,13 +59,13 @@ export const content = `
   | Paragraph   | Text        |
   `;
 
-
 const ArticleTest = () => {
-
   return (
-    <div style={{
-      maxWidth: '100%',
-    }}>
+    <div
+      style={{
+        maxWidth: "100%",
+      }}
+    >
       <Markdown
         children={content}
         remarkPlugins={[remarkGfm]}
@@ -76,4 +94,3 @@ const ArticleTest = () => {
 };
 
 export default ArticleTest;
-

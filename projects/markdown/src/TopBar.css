@@ -16,3 +16,9 @@ header nav {
   display: inherit;
   gap: 16px;
 }
+
+@media (prefers-color-scheme: light) {
+  header {
+    background-color: #f2f2f2;
+  }
+}

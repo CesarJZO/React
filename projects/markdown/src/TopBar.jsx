@@ -11,6 +11,7 @@ const TopBar = () => {
         <Link to="/article/0">Article 1</Link>
         <Link to="/article/1">Article 2</Link>
         <Link to="/article/2">Article 3</Link>
+        <Link to="/article/3">Article 4</Link>
       </nav>
     </header>
   );

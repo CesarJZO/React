@@ -21,7 +21,11 @@ const Article = () => {
       .catch((error) => console.error(error));
   }, [id]);
 
-  return <Markdown className="markdown">{markdownContent}</Markdown>;
+  return (
+    <Markdown className="markdown">
+      {id == 3 ? content : markdownContent}
+    </Markdown>
+  );
 };
 
 export default Article;
