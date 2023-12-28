@@ -9,12 +9,12 @@ const files = [
   "https://raw.githubusercontent.com/CesarJZO/C/main/readme.md",
 ];
 
-const Article = () => {
+const Article = ({ index }) => {
   const [markdownContent, setMarkdownContent] = useState("");
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * files.length);
-    fetch(files[randomIndex])
+    fetch(files[index ? index : randomIndex])
       .then((response) => response.text())
       .then((data) => setMarkdownContent(data))
       .catch((error) => console.error(error));
