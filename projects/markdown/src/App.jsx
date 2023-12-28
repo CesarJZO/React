@@ -1,9 +1,18 @@
+import TopBar from "./TopBar";
 import Article from "./Article";
 
 import "./App.css";
 
 function App() {
-  return <Article />;
+  return (
+    <>
+      <TopBar />
+
+      <main>
+        <Article />
+      </main>
+    </>
+  );
 }
 
 export default App;

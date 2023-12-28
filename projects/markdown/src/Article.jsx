@@ -13,12 +13,13 @@ const Article = () => {
   const [markdownContent, setMarkdownContent] = useState("");
 
   useEffect(() => {
-    fetch(files[2])
+    const randomIndex = Math.floor(Math.random() * files.length);
+    fetch(files[randomIndex])
       .then((response) => response.text())
       .then((data) => setMarkdownContent(data))
       .catch((error) => console.error(error));
   }, []);
-  
+
   return <Markdown className="markdown">{markdownContent}</Markdown>;
 };
 

@@ -1,0 +1,18 @@
+header {
+  background-color: #161616;
+  padding: 1em 2em;
+
+  display: flex;
+  flex: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header * {
+  margin: 0;
+}
+
+header nav {
+  display: inherit;
+  gap: 16px;
+}
