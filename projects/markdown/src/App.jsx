@@ -12,6 +12,7 @@ function App() {
 
         <main>
           <Routes>
+            <Route path="/" element={<h1>Home</h1>} />
             <Route path="/article/:id" element={<Article />} />
           </Routes>
         </main>

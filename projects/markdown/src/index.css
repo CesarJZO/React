@@ -11,6 +11,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  scrollbar-gutter: stable both-edges;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
