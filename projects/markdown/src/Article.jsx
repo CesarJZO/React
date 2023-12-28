@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Markdown from "react-markdown";
 import { content } from "./ArticleTest";
 import "./Article.css";
+import { useParams } from "react-router";
 
 const files = [
   "https://raw.githubusercontent.com/CesarJZO/CesarJZO/main/readme.md",
@@ -9,16 +10,16 @@ const files = [
   "https://raw.githubusercontent.com/CesarJZO/C/main/readme.md",
 ];
 
-const Article = ({ index }) => {
+const Article = () => {
   const [markdownContent, setMarkdownContent] = useState("");
+  const { id } = useParams();
 
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * files.length);
-    fetch(files[index ? index : randomIndex])
+    fetch(files[id])
       .then((response) => response.text())
       .then((data) => setMarkdownContent(data))
       .catch((error) => console.error(error));
-  }, []);
+  }, [id]);
 
   return <Markdown className="markdown">{markdownContent}</Markdown>;
 };

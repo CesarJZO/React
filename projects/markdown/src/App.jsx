@@ -12,9 +12,7 @@ function App() {
 
         <main>
           <Routes>
-            <Route path="/" element={<Article />} />
-            <Route path="/platformer" element={<Article index={1} />} />
-            <Route path="/c" element={<Article index={2} />} />
+            <Route path="/article/:id" element={<Article />} />
           </Routes>
         </main>
       </BrowserRouter>
