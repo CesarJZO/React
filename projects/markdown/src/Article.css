@@ -16,16 +16,11 @@
 }
 
 .markdown pre {
-  background-color: #363636;
-  border-radius: 4px;
-  
-  padding: 2em;
   overflow-x: auto;
 }
 
 .markdown pre code {
-  background-color: transparent;
-  border-radius: 0;
+  background-color: unset;
   padding: 0;
 }
 
@@ -60,9 +55,6 @@
     border-bottom: 2px solid #e0e0e0;
   }
   .markdown code {
-    background-color: #f2f2f2;
-  }
-  .markdown pre {
     background-color: #f2f2f2;
   }
   .markdown blockquote {
