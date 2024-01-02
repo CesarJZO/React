@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Markdown from "react-markdown";
 import { content } from "./ArticleTest";
 import "./Article.css";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { Prism } from "react-syntax-highlighter";
 import {
   oneDark,
   synthwave84,
@@ -47,7 +47,7 @@ const Article = () => {
           const { children, className, node, ...rest } = props;
           const match = /language-(\w+)/.exec(className || "");
           return match ? (
-            <SyntaxHighlighter
+            <Prism
               {...rest}
               PreTag="div"
               children={String(children).replace(/\n$/, "")}

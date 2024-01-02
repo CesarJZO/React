@@ -3,6 +3,7 @@
   border: #363636 1px solid;
   border-radius: 8px;
   padding: 1em 2em;
+  box-sizing: border-box;
 }
 
 .markdown h1 {
