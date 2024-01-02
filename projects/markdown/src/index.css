@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'Cascadia Code';
-  src: url('../public/fonts/CascadiaCode.ttf') format('truetype');
+  src: url('fonts/CascadiaCode.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Cascadia Code Italic';
-  src: url('../public/fonts/CascadiaCodeItalic.ttf') format('truetype');
+  src: url('fonts/CascadiaCodeItalic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }

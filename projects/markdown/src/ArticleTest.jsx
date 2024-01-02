@@ -87,7 +87,7 @@ export const content = `
 
   > An image:
 
-  > ![React](../public/images/Jog.png)
+  > ![React](images/Jog.png)
 
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, facilis harum corporis illum dicta, doloribus doloremque veniam, explicabo ipsum laborum quibusdam sunt facere repellat quos delectus expedita quisquam hic eligendi!
 
