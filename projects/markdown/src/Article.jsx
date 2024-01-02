@@ -4,8 +4,17 @@ import { content } from "./ArticleTest";
 import "./Article.css";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
+  oneDark,
+  synthwave84,
+  dracula,
+  atomDark,
+  darcula,
+  materialDark,
+  nord,
+  vscDarkPlus,
+  
   oneLight,
-  atomDark
+  materialLight
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useParams } from "react-router";
 
@@ -27,12 +36,13 @@ const Article = () => {
       .catch((error) => console.error(error));
   }, [id]);
 
-  const theme = colorScheme === "light" ? oneLight : atomDark;
+  const theme = colorScheme === "light" ? oneLight : oneDark;
 
   return (
     <Markdown
       className="markdown"
       components={{
+        div: ({ node, ...props }) => <article {...props} />,
         code(props) {
           const { children, className, node, ...rest } = props;
           const match = /language-(\w+)/.exec(className || "");
@@ -43,6 +53,7 @@ const Article = () => {
               children={String(children).replace(/\n$/, "")}
               language={match[1]}
               style={theme}
+              role="code"
             />
           ) : (
             <code {...rest} className={className}>

@@ -11,10 +11,48 @@ export const content = `
 
   **Lorem ipsum** dolor sit amet, consectetur adipisicing elit. Perferendis, facilis harum corporis illum dicta, doloribus doloremque veniam, explicabo ipsum laborum quibusdam sunt facere repellat quos delectus expedita quisquam hic eligendi!
   
-  \`\`\`js
+  \`\`\`ts
+  import axios from "axios";
+  import { useEffect, useState } from "react";
+
   const a = 1
   const b = 2
   const c = a + b
+
+  function isEven(n) {
+    return n % 2 == 0
+  }
+
+  const numbers = [1, 2, 3, 4, 5]
+  const even = numbers.filter(isEven)
+
+  for (let i = 0; i < 10; i++) {
+    console.log(isEven(i))
+  }
+  \`\`\`
+
+  \`\`\`csharp
+  using System;
+
+  namespace HelloWorld;
+
+  internal class Program
+  {
+    private static void Main(string[] args)
+    {
+      Console.WriteLine("Hello World!");
+    }
+
+    private static bool IsEven(int n)
+    {
+      return n % 2 == 0;
+    }
+
+    public Complex ReallyComplexFunction(int a, int b)
+    {
+      return new Complex(a, b);
+    }
+  }
   \`\`\`
 
   > A block quote with strikethrough and a URL: [React](https://reactjs.org).

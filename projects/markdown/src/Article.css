@@ -1,5 +1,8 @@
 .markdown {
   line-height: 1.5em;
+  border: #363636 1px solid;
+  border-radius: 8px;
+  padding: 1em 2em;
 }
 
 .markdown h1 {
@@ -10,13 +13,21 @@
 .markdown code {
   background-color: #363636;
   border-radius: 4px;
-  
-  font-family: 'Cascadia Code', 'Cascadia Code Italic', consolas, 'Courier New', Courier, monospace;
+
   padding: 2px 4px;
+  font-size: 1rem;
+
+  font-family: "Cascadia Code", "Cascadia Code Italic", consolas, "Courier New",
+    Courier, monospace !important;
 }
 
-.markdown pre {
-  overflow-x: auto;
+.markdown pre > div {
+  margin: 0 !important;
+  border-radius: 4px !important;
+}
+
+.markdown pre > div * {
+  font-size: 1rem !important;
 }
 
 .markdown pre code {
@@ -51,6 +62,9 @@
 }
 
 @media (prefers-color-scheme: light) {
+  .markdown {
+    border: #e0e0e0 1px solid;
+  }
   .markdown h1 {
     border-bottom: 2px solid #e0e0e0;
   }
